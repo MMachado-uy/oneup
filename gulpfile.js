@@ -36,7 +36,9 @@ gulp.task('styles', function() {
         .pipe(concat('main.css'))
         .pipe(gulp.dest('dist/styles'))
         .pipe(rename({suffix: '.min'}))
-        .pipe(minifycss())
+        .pipe(minifycss()).on('error', function (err) {
+            gutil.log(gutil.colors.red('[Error]'), err.toString());
+        })
         .pipe(gulp.dest('dist/styles'))
         .pipe(livereload(server))
 });
@@ -59,7 +61,13 @@ gulp.task('scripts', function() {
 // Images
 gulp.task('images', function() {
     return gulp.src('src/images/**/*')
-        .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
+        .pipe(cache(imagemin({
+            optimizationLevel: 3,
+            progressive: true,
+            interlaced: true
+        })).on('error', function (err) {
+            gutil.log(gutil.colors.red('[Error]'), err.toString());
+        }))
         .pipe(gulp.dest('dist/images'))
         .pipe(livereload(server))
 });
