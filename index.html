@@ -3,18 +3,141 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Level Up</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.1">
-    <link rel="stylesheet" type="text/css" media="screen" href="./dist/styles/main.min.css" />
+    <link rel="stylesheet" href="./dist/lib/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="./dist/styles/main.css" />
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div>Hola mundo</div>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">{{Coso del loguito}}</a>
+        <button class="navbar-toggler" 
+                type="button" 
+                data-toggle="collapse" 
+                data-target="#menu" 
+                aria-controls="navbarNav" 
+                aria-expanded="false" 
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav"></ul>
+        </div>
+    </nav>
+
+    <div class="section" id="banner">
+        <div class="container-fluid">
+            <div class="row banner">
+                <div class="col main-title">
+                    <h1>Academia Level Up</h1>
+                    <h2>Coso con detallecito</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="details">
+        <div class="container">
+            <div class="row details">
+                <div class="col-sm-5 col-">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque blanditiis esse sint atque quo perferendis dolorum voluptates quae, ipsa officia reprehenderit odit! Fuga unde repellendus molestias soluta dicta laudantium? Aut!
+                </div>
+                <div class="col-sm-5">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis perferendis atque quam incidunt quidem dolor eveniet. Similique quidem qui sint saepe quo, autem voluptatum quaerat, iusto, deleniti cum velit sequi.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="workshops">
+        <div class="container">
+            <div class="row workshops">
+                <div class="col">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                    Voluptate sunt soluta quam molestias animi consectetur repellendus, 
+                        voluptatem ullam explicabo ipsa ut in dolores commodi distinctio 
+                        incidunt consequatur, inventore, quos sequi.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="testimonials">
+        <div class="container">
+            <div class="row testimonials">
+                <div class="col-12">
+                    <h2>Nuestros alumnos nos dan re para adelante!</h2>
+                </div>
+                <div class="col-sm-3 col-lg-4">
+                    <div class="portrait">
+                        <img src="dist/images/face.jpg" alt="">
+                    </div>
+                    <div class="comment">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Aperiam repellendus sequi provident. Unde corporis sunt saepe, 
+                        labore nostrum iusto suscipit enim aspernatur maxime doloremque dolores tempora amet blanditiis quis. Iure.
+                    </div>
+                </div>
+                <div class="col-sm-3 col-lg-4">
+                    <div class="portrait">
+                        <img src="dist/images/face.jpg" alt="">
+                    </div>
+                    <div class="comment">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam repellendus sequi provident. Unde corporis sunt saepe, labore
+                        nostrum iusto suscipit enim aspernatur maxime doloremque dolores tempora amet blanditiis quis. Iure.
+                    </div>
+                </div>
+                <div class="col-sm-3 col-lg-4">
+                    <div class="portrait">
+                        <img src="dist/images/face.jpg" alt="">
+                    </div>
+                    <div class="comment">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam repellendus sequi provident. Unde corporis sunt saepe, labore
+                        nostrum iusto suscipit enim aspernatur maxime doloremque dolores tempora amet blanditiis quis. Iure.
+                    </div>
+                </div>
+                <div class="col-sm-3 col-lg-4">
+                    <div class="portrait">
+                        <img src="dist/images/face.jpg" alt="">
+                    </div>
+                    <div class="comment">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam repellendus sequi provident. Unde corporis sunt saepe, labore
+                        nostrum iusto suscipit enim aspernatur maxime doloremque dolores tempora amet blanditiis quis. Iure.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="location">
+        <div class="container">
+            <div class="row location">
+                <div class="col-12">
+                    <h1>Por donde andamos?</h1>
+                </div>
+                <div class="col-6">Cerquita de todos lados como quien dice</div>
+                <div class="col-6" id="map">
+
+                </div>
             </div>
         </div>
     </div>
 </body>
-<script src="./dist/scripts/main.min.js"></script>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col left">
+                <ul>
+                    <li><i class="fa fa-phone"></i>098 *** ***</li>
+                </ul>
+            </div>
+            <div class="col center">El cosito con el contenido</div>
+            <div class="col right">El cosito con las redes sociales</div>
+        </div>
+    </div>
+</footer>
+<script src="./dist/scripts/main.js"></script>
+<script async defer 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCIPOhUPEcN92r2-GolU5ZZ1spTWmUEck&callback=loadMap">
+</script>
 </html>

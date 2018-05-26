@@ -1,0 +1,11 @@
+#banner {
+    .banner {
+        height: 50vh;
+        background-image: url('../images/1200px-Andrew_Classroom_De_La_Salle_University.jpeg');
+        background-position: center center;
+        background-size: cover;
+        color: $white;
+        padding: 25px 0 0 25px;
+        text-shadow: 1px 1px 1px black;
+    }
+}

@@ -1,0 +1,33 @@
+body {
+    margin-top: 56px;
+}
+
+footer {
+    background-color: $main;
+    box-shadow: 0 -1px 3px black;
+    color: $white;
+    min-height: 80px;
+    padding: 25px 0 15px;
+    .map {
+        max-width: 100%;
+    }
+    ul {
+        list-style: none;
+    }
+}
+
+i {
+    margin: 0 5px;
+}
+
+.section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    &:first-of-type {
+        padding-top: 0;
+        padding-bottom: 0;
+    }    
+    &:nth-child(odd) {
+        background-color: $main;
+    }    
+}    

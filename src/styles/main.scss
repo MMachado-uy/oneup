@@ -1,7 +1,6 @@
-a {
-    color:black;
-}
-
-body {
-    margin: none;
-}
+@import 'variables';
+@import 'utilities';
+@import 'layout';
+@import 'banner';
+@import 'testimonials';
+@import 'location';

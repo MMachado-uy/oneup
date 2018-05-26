@@ -9,62 +9,65 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     clean = require('gulp-clean'),
     concat = require('gulp-concat'),
-    notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
     webserver = require('gulp-webserver'),
+    gutil = require('gulp-util');
     lr = require('tiny-lr'),
     server = lr();
 
-// Libraries
-var jqueryPath = './node_modules/jquery/dist/jquery.min.js';
-var bootstrapJSPath = './node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
+// Paths
+var jsPaths = [
+    './node_modules/jquery/dist/jquery.min.js',
+    './node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
+    'src/scripts/script.js'
+];
 
-var bootstrapCSSPath = './node_modules/bootstrap/dist/css/bootstrap.min.css';
+var cssPaths = [
+    './node_modules/bootstrap/dist/css/bootstrap.min.css',
+    './src/styles/*.scss'
+];
 
 // Styles
 gulp.task('styles', function() {
-    return gulp.src([
-            bootstrapCSSPath,
-            './src/styles/*.scss'
-        ])
-        .pipe(gulp.dest('dist/styles'))
+    return gulp.src(cssPaths)
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
         .pipe(concat('main.css'))
-        .pipe(sass().on('error', sass.logError)).pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+        .pipe(gulp.dest('dist/styles'))
         .pipe(rename({suffix: '.min'}))
         .pipe(minifycss())
-        .pipe(livereload(server))
         .pipe(gulp.dest('dist/styles'))
+        .pipe(livereload(server))
 });
 
 // Scripts
 gulp.task('scripts', function() {
-    return gulp.src([
-            jqueryPath,
-            bootstrapJSPath,
-            'src/scripts/*.js'
-        ])
+    return gulp.src(jsPaths)
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter('default'))
         .pipe(concat('main.js'))
         .pipe(gulp.dest('dist/scripts'))
         .pipe(rename({ suffix: '.min' }))
-        .pipe(uglify())
-        .pipe(livereload(server))
+        .pipe(uglify()).on('error', function (err) {
+            gutil.log(gutil.colors.red('[Error]'), err.toString());
+        })
         .pipe(gulp.dest('dist/scripts'))
+        .pipe(livereload(server))
 });
 
 // Images
 gulp.task('images', function() {
     return gulp.src('src/images/**/*')
         .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
-        .pipe(livereload(server))
         .pipe(gulp.dest('dist/images'))
+        .pipe(livereload(server))
 });
 
+// Html
 gulp.task('html', function () {
     gulp.src('./*.html')
-        .pipe(livereload());
+        .pipe(livereload(server));
 });
 
 // Clean
@@ -95,7 +98,7 @@ gulp.task('watch', function() {
     gulp.watch('src/styles/**/*.scss', ['styles']);
     
     // Watch .js files
-    gulp.watch('src/scripts/**/*.js', ['scripts']);
+    gulp.watch('src/scripts/*.js', ['scripts']);
     
     // Watch image files
     gulp.watch('src/images/**/*', ['images']);
