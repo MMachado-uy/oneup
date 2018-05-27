@@ -41,7 +41,6 @@ gulp.task('styles', function() {
             gutil.log(gutil.colors.red('[Error]'), err.toString());
         })
         .pipe(gulp.dest('dist/styles'))
-        .pipe(livereload(server))
 });
 
 // Scripts
@@ -57,7 +56,6 @@ gulp.task('scripts', function() {
             gutil.log(gutil.colors.red('[Error]'), err.toString());
         })
         .pipe(gulp.dest('dist/scripts'))
-        .pipe(livereload(server))
 });
 
 // Images
@@ -72,7 +70,6 @@ gulp.task('images', function() {
             gutil.log(gutil.colors.red('[Error]'), err.toString());
         }))
         .pipe(gulp.dest('dist/images'))
-        .pipe(livereload(server))
 });
 
 // Html
@@ -124,5 +121,5 @@ gulp.task('serve', ['build'], () => {
 });
 
 // Compile the project
-gulp.task('build', ['clean', 'styles', 'scripts', 'images'], () => {
+gulp.task('build', ['styles', 'scripts', 'images'], () => {
 });
