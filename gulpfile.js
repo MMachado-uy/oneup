@@ -30,13 +30,14 @@ var cssPaths = [
 
 // Styles
 gulp.task('styles', function() {
-    return gulp.src(cssPaths)
+    gulp.src(cssPaths)
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
         .pipe(concat('main.css'))
         .pipe(gulp.dest('dist/styles'))
         .pipe(rename({suffix: '.min'}))
-        .pipe(minifycss()).on('error', function (err) {
+        .pipe(minifycss())
+        .on('error', function (err) {
             gutil.log(gutil.colors.red('[Error]'), err.toString());
         })
         .pipe(gulp.dest('dist/styles'))
@@ -45,13 +46,14 @@ gulp.task('styles', function() {
 
 // Scripts
 gulp.task('scripts', function() {
-    return gulp.src(jsPaths)
+    gulp.src(jsPaths)
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter('default'))
         .pipe(concat('main.js'))
         .pipe(gulp.dest('dist/scripts'))
         .pipe(rename({ suffix: '.min' }))
-        .pipe(uglify()).on('error', function (err) {
+        .pipe(uglify())
+        .on('error', function (err) {
             gutil.log(gutil.colors.red('[Error]'), err.toString());
         })
         .pipe(gulp.dest('dist/scripts'))
@@ -60,12 +62,13 @@ gulp.task('scripts', function() {
 
 // Images
 gulp.task('images', function() {
-    return gulp.src('src/images/**/*')
+    gulp.src('src/images/**/*')
         .pipe(cache(imagemin({
             optimizationLevel: 3,
             progressive: true,
             interlaced: true
-        })).on('error', function (err) {
+        }))
+        .on('error', function (err) {
             gutil.log(gutil.colors.red('[Error]'), err.toString());
         }))
         .pipe(gulp.dest('dist/images'))
@@ -80,13 +83,13 @@ gulp.task('html', function () {
 
 // Clean
 gulp.task('clean', function() {
-    return gulp.src(['dist/styles', 'dist/scripts', 'dist/images'], { read: false })
-        .pipe(clean());
+    gulp.src(['dist/styles', 'dist/scripts', 'dist/images'], { read: false })
+        .pipe(clean())
+        .pipe(gulp.dest('dist'));
 });
 
 // Default task
-gulp.task('default', ['clean'], () => {
-    gulp.run('styles', 'scripts', 'images');
+gulp.task('default', ['clean', 'styles', 'scripts', 'images'], () => {
 });
 
 // Webserver
@@ -121,6 +124,5 @@ gulp.task('serve', ['build'], () => {
 });
 
 // Compile the project
-gulp.task('build', ['clean'], () => {
-    gulp.start(['styles', 'scripts', 'images'])
+gulp.task('build', ['clean', 'styles', 'scripts', 'images'], () => {
 });
