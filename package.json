@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:prod": "gulp build && http-server ./ -p 3000 -g"
+    "start:prod": "gulp build && http-server ./ -p 3000 -g -d false -r"
   },
   "author": "",
   "license": "ISC",
