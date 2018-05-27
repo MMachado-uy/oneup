@@ -29,8 +29,8 @@ var cssPaths = [
 ];
 
 // Styles
-gulp.task('styles', function() {
-    gulp.src(cssPaths)
+gulp.task('styles', function(cb) {
+    var stream = gulp.src(cssPaths)
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
         .pipe(concat('main.css'))
@@ -41,11 +41,12 @@ gulp.task('styles', function() {
             gutil.log(gutil.colors.red('[Error]'), err.toString());
         })
         .pipe(gulp.dest('dist/styles'))
+        .on('end', cb);
 });
 
 // Scripts
-gulp.task('scripts', function() {
-    gulp.src(jsPaths)
+gulp.task('scripts', ['styles'], function(cb) {
+    var stream = gulp.src(jsPaths)
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter('default'))
         .pipe(concat('main.js'))
@@ -56,11 +57,12 @@ gulp.task('scripts', function() {
             gutil.log(gutil.colors.red('[Error]'), err.toString());
         })
         .pipe(gulp.dest('dist/scripts'))
+        .on('end', cb);
 });
 
 // Images
-gulp.task('images', function() {
-    gulp.src('src/images/**/*')
+gulp.task('images', ['scripts'], function(cb) {
+    var stream = gulp.src('src/images/**/*')
         .pipe(cache(imagemin({
             optimizationLevel: 3,
             progressive: true,
@@ -70,6 +72,7 @@ gulp.task('images', function() {
             gutil.log(gutil.colors.red('[Error]'), err.toString());
         }))
         .pipe(gulp.dest('dist/images'))
+        .on('end', cb);
 });
 
 // Html
