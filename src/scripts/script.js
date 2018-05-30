@@ -5,21 +5,6 @@ function init() {
     scroller();
 }
 
-function loadMap() {
-    var lvlup = {
-        lat: -34.873809,
-        lng: -56.160348
-    };
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
-        center: lvlup
-    });
-    var marker = new google.maps.Marker({
-        position: lvlup,
-        map: map
-    });
-}
-
 function buildMenu() {
     var sections = $('.section');
     var menu = $('#menu .navbar-nav');

@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Level Up</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.1">
-    <link rel="stylesheet" href="./dist/lib/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="./dist/styles/main.css" />
 </head>
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
@@ -68,9 +66,17 @@
                 <div class="col-12">
                     <h2>Nuestros alumnos nos dan re para adelante!</h2>
                 </div>
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="img/face.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
                 <div class="col-sm-3 col-lg-4">
                     <div class="portrait">
-                        <img src="dist/images/face.jpg" alt="">
+                        <img src="img/face.jpg" alt="">
                     </div>
                     <div class="comment">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -80,7 +86,7 @@
                 </div>
                 <div class="col-sm-3 col-lg-4">
                     <div class="portrait">
-                        <img src="dist/images/face.jpg" alt="">
+                        <img src="img/face.jpg" alt="">
                     </div>
                     <div class="comment">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam repellendus sequi provident. Unde corporis sunt saepe, labore
@@ -89,7 +95,7 @@
                 </div>
                 <div class="col-sm-3 col-lg-4">
                     <div class="portrait">
-                        <img src="dist/images/face.jpg" alt="">
+                        <img src="img/face.jpg" alt="">
                     </div>
                     <div class="comment">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam repellendus sequi provident. Unde corporis sunt saepe, labore
@@ -98,7 +104,7 @@
                 </div>
                 <div class="col-sm-3 col-lg-4">
                     <div class="portrait">
-                        <img src="dist/images/face.jpg" alt="">
+                        <img src="img/face.jpg" alt="">
                     </div>
                     <div class="comment">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam repellendus sequi provident. Unde corporis sunt saepe, labore
@@ -136,7 +142,22 @@
         </div>
     </div>
 </footer>
-<script src="./dist/scripts/main.js"></script>
+<script>
+    function loadMap() {
+        let lvlup = {
+            lat: -34.873809,
+            lng: -56.160348
+        };
+        let map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: lvlup
+        });
+        let marker = new google.maps.Marker({
+            position: lvlup,
+            map: map
+        });
+    }
+</script>
 <script async defer 
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCIPOhUPEcN92r2-GolU5ZZ1spTWmUEck&callback=loadMap">
 </script>

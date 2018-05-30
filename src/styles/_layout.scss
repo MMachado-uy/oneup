@@ -8,9 +8,11 @@ footer {
     color: $white;
     min-height: 80px;
     padding: 25px 0 15px;
+    
     .map {
         max-width: 100%;
     }
+    
     ul {
         list-style: none;
     }
@@ -21,12 +23,14 @@ i {
 }
 
 .section {
-    padding-top: 60px;
     padding-bottom: 60px;
+    padding-top: 60px;
+
     &:first-of-type {
-        padding-top: 0;
         padding-bottom: 0;
+        padding-top: 0;
     }    
+
     &:nth-child(odd) {
         background-color: $main;
     }    
